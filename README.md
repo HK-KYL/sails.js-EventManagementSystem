@@ -4,6 +4,24 @@ a [Sails v1](https://sailsjs.com) application
 
 HKBU Event Management System is a web-based system for department and student societies to broadcast events and acitivities as well as registration.
 
+## Index
+![alt text](https://github.com/HK-KYL/sails.js-EventManagementSystem/blob/master/readme_img/index.png?raw=true)
+
+## Event Details
+![alt text](https://github.com/HK-KYL/sails.js-EventManagementSystem/blob/master/readme_img/details_page.png?raw=true)
+
+## Event Create
+![alt text](https://github.com/HK-KYL/sails.js-EventManagementSystem/blob/master/readme_img/create_page.png?raw=true)
+
+## Admin Page
+![alt text](https://github.com/HK-KYL/sails.js-EventManagementSystem/blob/master/readme_img/admin_page.png?raw=true)
+
+## Event Update
+![alt text](https://github.com/HK-KYL/sails.js-EventManagementSystem/blob/master/readme_img/create_page.png?raw=true)
+
+## Event Search
+![alt text](https://github.com/HK-KYL/sails.js-EventManagementSystem/blob/master/readme_img/search_page.png?raw=true)
+
 ### Links
 
 + [Get started](https://sailsjs.com/get-started)
