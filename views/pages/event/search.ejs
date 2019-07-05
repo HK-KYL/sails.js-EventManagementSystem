@@ -1,0 +1,87 @@
+<div class="row">
+    <% 
+        const q = req.query;
+
+        const current = parseInt(q.page) || 1;
+
+        var str = "";
+
+        if (isSearching) {
+            str = "&name=" + (q.name || "") + "&org=" + (q.org || "") + "&s_date=" + (q.s_date || "") + "&e_date=" + (q.e_date || "") + "&venue=" + (q.venue || "");
+        }
+    %>
+
+        <div class="card col-12 col-md-7">
+
+            <div class="row">
+                <nav aria-label="Page navigation example" class="card col-12">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="/event/search/?page=<%= Math.max(current-1, 1) %><%= str %>">Previous</a>
+                        </li>
+
+                        <% for (i = 1; i <= count; i++) { %>
+                            <li class="page-item">
+                                <a class="page-link" href="/event/search/?page=<%= i %><%= str %>">
+                                    <%= i %>
+                                </a>
+                            </li>
+                            <% } %>
+
+                                <li class="page-item">
+                                    <a class="page-link" href="/event/search/?page=<%= Math.min(current+1, count) %><%= str %>">Next</a>
+                                </li>
+                    </ul>
+                </nav>
+
+                <% events.forEach( function(e) { %>
+                    <div class="card col-12 col-md-6">
+                        <img class="card-img-top" src="<%= e.url %>" alt="<%= e.name %>">
+                        <div class="card-body">
+                            <a href="/event/<%= e.id %>">
+                                <h5 class="card-title">
+                                    <%= e.name %>
+                                </h5>
+                            </a>
+                            <p class="card-text">
+                                <%= e.s_desc %>
+                            </p>
+                        </div>
+                    </div>
+                    <% }); %>
+            </div>
+        </div>
+
+        <div class="card col-12 col-md-5">
+            <form action="/event/search" method="GET">
+                <div class="form-group">
+
+                    <label>Event Name:</label>
+                    <input type="text" class="form-control" name="name">
+                    <label>Organizer:</label>
+                    <select id="org" class="form-control" name="org">
+                        <option value="" disabled selected hidden>Please Choose Organizer</option>
+                        <option value="Department of Music">Department of Music</option>
+                        <option value="Department of Art">Department of Art</option>
+                        <option value="Department of Science">Department of Science</option>
+                    </select>
+                    <label>Start Date:</label>
+                    <input type="datetime" data-provide="datepicker" data-date-format="yyyy/mm/dd" name="s_date" class="form-control datepicker"
+                        id="date" placeholder="yyyy/mm/dd">
+                    <label>End Date:</label>
+                    <input type="date" data-provide="datepicker" data-date-format="yyyy/mm/dd" name="e_date" class="form-control datepicker"
+                        id="datetime" placeholder="yyyy/mm/dd">
+                    <label>Venue:</label>
+                    <select id="venue" class="form-control" name="venue">
+                        <option value="" disabled selected hidden>Please Choose Venue</option>
+                        <option value="AC Hall">AC Hall</option>
+                        <option value="BC Hall">BC Hall</option>
+                        <option value="CC Hall">CC Hall</option>
+                    </select>
+
+                </div>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+        </div>
+
+</div>

@@ -1,0 +1,93 @@
+<div class="row">
+    <h3 class="float-left card col-12" style="padding: 0.5em">
+        <%= event.name %>
+    </h3>
+    <div class="card col-12 col-md-6">
+        <img class="img-fluid img-thumbnail" alt="<%= event.name %>" src="<%= event.url %>">
+    </div>
+    <div class="card col-12 col-md-6">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <%= event.f_desc %>
+            </li>
+            <li class="list-group-item">
+                <b>Date: </b>
+                <%= event.date.getDate() %> /
+                <%= event.date.getMonth() + 1 %> /
+                <%= event.date.getFullYear() %>
+            </li>
+            <li class="list-group-item">
+                <b>Time: </b>
+                <%= event.s_time %> -
+                <%= event.e_time %>
+            </li>
+            <li class="list-group-item">
+                <b>Venue: </b>
+                <%= event.venue %>
+            </li>
+            <li class="list-group-item">
+                <b>Quota: </b>
+                <%= event.quota %>
+            </li>
+        </ul>
+        <% if (req.session.role === 'student') {
+            if (!isReg) {
+        %>
+            <button type="submit" class="btn btn-success float-right" onclick="applyEvent('<%= event.id %>')">Join</button>
+        <% } else { %>
+            <button type="submit" class="btn btn-danger float-right" onclick="cancelEvent('<%= event.id %>')">Cancel</button>
+        <% } } %>
+    </div>
+</div>
+
+<script>
+    async function applyEvent(id) {
+
+        // console.log(oFormElement.method);
+
+        var response = await fetch('/event/reg/' + id, {
+            method: 'POST',
+            credentials: 'same-origin',
+        });
+
+        console.log(response);
+
+        if (response.redirected) {
+            window.location = response.url;
+        } else if (response.status == 200) {
+            var data = await response.json();
+            alert(data);
+        } else if (response.status == 401) {
+            var data = await response.text();
+            alert(data);
+        } else {
+            alert(response.statusText);
+        }
+
+    };
+
+    async function cancelEvent(id) {
+
+        // console.log(oFormElement.method);
+
+        var response = await fetch('/event/reg/' + id, {
+            method: 'DELETE',
+            credentials: 'same-origin',
+        });
+
+        console.log(response);
+
+        if (response.redirected) {
+            window.location = response.url;
+        } else if (response.status == 200) {
+            var data = await response.json();
+            alert(data);
+        } else if (response.status == 401) {
+            var data = await response.text();
+            alert(data);
+        } else {
+            alert(response.statusText);
+        }
+
+    };
+</script>

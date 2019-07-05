@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                </tr>
+            </thead>
+            <tbody>
+            <%  var n = 1;
+                participants.forEach( function(p) {
+            %>
+                <tr>
+                    <th scope="row"><%= n++ %></th>
+                    <td><%= p.id %></td>
+                    <td><%= p.username %></td>
+                </tr>
+            <% }); %>
+            </tbody>
+        </table>
+    </div>
+</div>

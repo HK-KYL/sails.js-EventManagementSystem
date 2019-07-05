@@ -1,0 +1,44 @@
+<form action="/user/login" method="POST" onsubmit="submitForm(this);return false">
+
+    <div class="form-group">
+        <label for="exampleInputEmail1">Username</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"
+            name="username" required>
+        <p>e.g. ac:student1 pw:123456, ac:student2 pw:123456, ac:admin pw:123456</p>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="password" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Sign in</button>
+</form>
+
+<script>
+    async function submitForm(oFormElement) {
+
+        var response = await fetch(oFormElement.action, {
+            method: oFormElement.method,
+            credentials: 'same-origin',
+            body: new FormData(oFormElement),
+        });
+
+        console.log(response);
+
+        if (response.redirected) {
+            window.location = response.url;
+        } else if (response.status == 200) {
+            var data = await response.json();
+            alert(data);
+            location.reload(true);
+        } else if (response.status == 401) {
+            var data = await response.text();
+            alert(data);
+        } else {
+            alert(response.statusText);
+        }
+
+    };
+
+</script>

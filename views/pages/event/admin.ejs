@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-12">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Event</th>
+                    <th scope="col">Organizer</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            <% events.forEach( function(e) { %>
+                <tr>
+                    <th scope="row"><%= e.id %></th>
+                    <td><a href="/event/<%= e.id %>"><%= e.name %></a></td>
+                    <td><%= e.org %></td>
+                    <td>
+                        <button type="submit" class="btn btn-warning" onclick="location.href='/event/full/<%= e.id %>'">Update</button>
+                        <button type="submit" class="btn btn-danger" onclick="deleteEvent('<%= e.id %>')">Delete</button>
+                        <button type="submit" class="btn btn-success" onclick="location.href='/event/<%= e.id %>/participant'">Registration</button>
+                    </td>
+                </tr>
+            <% }); %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+
+    async function deleteEvent(id) {
+
+        var r = confirm("Confirm Delete?");
+        if (r == true) {
+
+            var response = await fetch("/event/" + id, {
+                method: "DELETE",
+                credentials: 'same-origin',
+            });
+
+            console.log(response);
+
+            if (response.status == 200) {
+                var data = await response.json();
+                alert(data);
+                location.reload(true);
+            }
+
+        }
+
+    };
+
+</script>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>New Sails App</title>
+
+  <!-- Viewport mobile tag for sensible mobile support -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <!--STYLES-->
+  <link rel="stylesheet" href="/styles/importer.css">
+  <!--STYLES END-->
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+    crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css"
+    integrity="sha256-JDBcnYeV19J14isGd3EtnsCQK05d8PczJ5+fvEvBJvI=" crossorigin="anonymous" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.2.1/css/bootstrap-slider.min.css"
+    integrity="sha256-MopPr/VZnVTfUaSUkXEIk2AJt6Fa5WdNaYDbFLwVnBA=" crossorigin="anonymous" />
+
+  <style>
+    .slider.slider-horizontal .tooltip.tooltip-main.in,
+    .slider.slider-vertical .tooltip.tooltip-main.in {
+      opacity: 1 !important;
+    }
+  </style>
+
+</head>
+
+<body class="container">
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item">
+          <a class="nav-link <%= ( req.options.action === 'event/search' ) ? 'active' : '' %>" href="/event/search">Search</a>
+        </li>
+        <% if (req.session.role == 'admin') { %>
+        <li class="nav-item">
+          <a class="nav-link <%= ( req.options.action === 'event/create' ) ? 'active' : '' %>" href="/event">Create</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link <%= ( req.options.action === 'event/admin' ) ? 'active' : '' %>" href="/admin">Admin</a>
+        </li>
+        <% } else if (req.session.role == 'student') { %>
+        <li class="nav-item">
+          <a class="nav-link <%= ( req.options.action === 'user/populate' ) ? 'active' : '' %>" href="/event/reg">My
+            Registered Events</a>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+    <% if (req.session.username) { %>
+    <span class="navbar-text">
+      Hello,
+      <%= req.session.username %>
+    </span>
+    <button class="btn btn-outline-success my-2 my-sm-0" onclick="location.href='/user/logout'">Logout</button>
+    <% } else { %>
+    <button class="btn btn-outline-success my-2 my-sm-0" onclick="location.href='/user/login'">Login</button>
+    <% } %>
+    </div>
+  </nav>
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Event Management System</h1>
+      <p class="lead">HKBU Event Management System is a web-based system for department and student societies to
+        broadcast events and acitivities
+        as well as registration.</p>
+    </div>
+  </div>
+
+  <%- body %>
+
+  <!--SCRIPTS-->
+  <script src="/dependencies/sails.io.js"></script>
+  <!--SCRIPTS END-->
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.2/bootstrap-slider.min.js" integrity="sha256-VYMMGFCEeBYop7KDzrlj8Bf6R4rhv0XxdH/ctYViebc="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"
+    integrity="sha256-tW5LzEC7QjhG0CiAvxlseMTs2qJS7u3DRPauDjFJ3zo=" crossorigin="anonymous"></script>
+
+  <script>
+
+    $('#datepicker').datepicker({
+      format: 'yyyy/mm/dd'
+    });
+
+  </script>
+
+</body>
+
+</html>

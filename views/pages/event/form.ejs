@@ -1,0 +1,152 @@
+<% if (action == 'update') { %>
+    <form action="/event/<%= event.id %>" method="PATCH" onsubmit="submitForm(this); return false">
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+
+                <label for="name">Event Name:</label>
+                <input type="text" name="name" class="form-control" id="name" value="<%= event.name %>" required>
+
+                <label for="s_desc">Short Description:</label>
+                <textarea name="s_desc" class="form-control" id="s_desc" rows="7" required><%= event.s_desc %></textarea>
+
+                <label for="f_desc">Full Description:</label>
+                <textarea name="f_desc" class="form-control" id="f_desc" rows="7" required><%= event.f_desc %></textarea>
+
+            </div>
+            <div class="form-group col-md-6">
+
+                <label for="url">Image Url:</label>
+                <input type="text" name="url" class="form-control" id="url" value="<%= event.url %>" required>
+
+                <label for="org">Organizer: </label>
+                <select id="org" class="form-control" name="org" required>
+                    <option value="Department of Music" <% if (event.org=='Department of Music' ) { %> selected
+                        <% } %> >Department of Music</option>
+                    <option value="Department of Art" <% if (event.org=='Department of Art' ) { %> selected
+                        <% } %> >Department of Art</option>
+                    <option value="Department of Science" <% if (event.org=='Department of Science' ) { %> selected
+                        <% } %> >Department of Science</option>
+                </select>
+
+                <label for="date">Date:</label>
+                <br />
+                <input data-provide="datepicker" name="date" class="form-control datepicker" id="date" value="<%= event.date.getFullYear() %>/<%= event.date.getMonth() + 1 %>/<%= event.date.getDate() %>"
+                    placeholder="yyyy/mm/dd" required>
+                <br />
+
+                <label for="time">Time:</label>
+                <br />
+                <input type="text" name="s_time" class="form-control" id="s_time" placeholder="Start Time" value="<%= event.s_time %>" required>
+                <input type="text" name="e_time" class="form-control" id="e_time" placeholder="End Time" value="<%= event.e_time %>" required>
+                <br />
+
+                <label for="venue">Venue: </label>
+                <select id="venue" class="form-control" name="venue" required>
+                    <option value="AC Hall" <% if (event.venue=='AC Hall' ) { %> selected
+                        <% } %> >AC Hall</option>
+                    <option value="POD" <% if (event.venue=='POD' ) { %> selected
+                        <% } %> >POD</option>
+                    <option value="SWT501" <% if (event.venue=='SWT501' ) { %> selected
+                        <% } %> >SWT501</option>
+                    <option value="LW" <% if (event.venue=='LW' ) { %> selected
+                        <% } %> >LW</option>
+                </select>
+
+                <label for="quota">Quota:</label>
+                <input type="number" name="quota" class="form-control" id="quota" value="<%= event.quota %>" required>
+
+                <div class="form-check">
+                    <input class="form-check-input" name="highlighted" type="checkbox" id="hl" <% if (event.highlighted) { %> checked
+                    <% } %> >
+                        <label class="form-check-label" for="hl">
+                            Highlighted Event
+                        </label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+
+    <% } else { %>
+        <form action="/event" method="POST">
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="name">Event Name:</label>
+                    <input type="text" name="Event[name]" class="form-control" id="name" placeholder="Event Name" required>
+                    <label for="s_desc">Short Description:</label>
+                    <textarea name="Event[s_desc]" class="form-control" id="s_desc" rows="7" placeholder="Short Description" required></textarea>
+                    <label for="f_desc">Full Description:</label>
+                    <textarea name="Event[f_desc]" class="form-control" id="f_desc" rows="7" placeholder="Full Description" required></textarea>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="url">Image Url:</label>
+                    <input type="text" name="Event[url]" class="form-control" id="url" placeholder="Image" required>
+                    <label for="org">Organizer: </label>
+                    <select id="org" class="form-control" name="Event[org]" required>
+                        <option value="" disabled selected hidden>Please Choose Organizer</option>
+                        <option value="Department of Music">Department of Music</option>
+                        <option value="Department of Art">Department of Art</option>
+                        <option value="Department of Science">Department of Science</option>
+                    </select>
+                    <label for="date">Date:</label>
+                    <input data-provide="datepicker" data-date-format="yyyy/mm/dd" name="Event[date]" class="form-control datepicker" id="date"
+                        placeholder="yyyy/mm/dd" required>
+                    <label for="time">Time:</label>
+                    <br />
+                    <input type="text" name="Event[s_time]" class="form-control" id="s_time" placeholder="Start Time" required>
+                    <input type="text" name="Event[e_time]" class="form-control" id="e_time" placeholder="End Time" required>
+                    <br />
+                    <label for="venue">Venue: </label>
+                    <select id="venue" class="form-control" name="Event[venue]" required>
+                        <option value="" disabled selected hidden>Please Choose Venue</option>
+                        <option value="AC Hall">AC Hall</option>
+                        <option value="POD">POD</option>
+                        <option value="SWT501">SWT501</option>
+                        <option value="LW">LW</option>
+                    </select>
+                    <label for="quota">Quota:</label>
+                    <input type="number" name="Event[quota]" class="form-control" id="quota" placeholder="Quota" min=0 max=1000 required>
+                    <div class="form-check">
+                        <input class="form-check-input" name="Event[highlighted]" type="checkbox" id="hl">
+                        <label class="form-check-label" for="hl">
+                            Highlighted Event
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+
+        </form>
+        <% } %>
+
+
+            <script>
+                async function submitForm(oFormElement) {
+
+                    // console.log(oFormElement.method);
+
+                    var response = await fetch(oFormElement.action, {
+                        method: 'PATCH',
+                        credentials: 'same-origin',
+                        body: new FormData(oFormElement),
+                    });
+
+                    console.log(response);
+
+                    if (response.redirected) {
+                        window.location = response.url;
+                    } else if (response.status == 200) {
+                        var data = await response.json();
+                        alert(data);
+                        location.assign('/admin');
+                    } else if (response.status == 401) {
+                        var data = await response.text();
+                        alert(data);
+                    } else {
+                        alert(response.statusText);
+                    }
+
+                };
+            </script>
