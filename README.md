@@ -22,14 +22,23 @@ HKBU Event Management System is a web-based system for department and student so
 ## Admin Page
 ![alt text](https://github.com/HK-KYL/sails.js-EventManagementSystem/blob/master/readme_img/admin_page.JPG?raw=true)
 
-## Event Create
-![alt text](https://github.com/HK-KYL/sails.js-EventManagementSystem/blob/master/readme_img/create_page.png?raw=true)
-
 ## Event Update
 ![alt text](https://github.com/HK-KYL/sails.js-EventManagementSystem/blob/master/readme_img/update_page.JPG?raw=true)
 
-## Event Update
+## Registered Events List
 ![alt text](https://github.com/HK-KYL/sails.js-EventManagementSystem/blob/master/readme_img/registered_events.JPG?raw=true)
+
+### Installation
+
+This system requires [Node.js](https://nodejs.org/) and [Sails.js](https://sailsjs.com) to run.
+
+Install the dependencies and devDependencies and start the server.
+
+```sh
+$ cd sails.js-EventManagementSystem
+$ npm i
+$ sails lift
+```
 
 ### Links
 
