@@ -11,25 +11,25 @@ HKBU Event Management System is a web-based system for department and student so
 ![alt text](https://github.com/HK-KYL/sails.js-EventManagementSystem/blob/master/readme_img/search_page.png?raw=true)
 
 ## Event Details
-![alt text](https://github.com/HK-KYL/sails.js-EventManagementSystem/blob/master/readme_img/event_details.jpg?raw=true)
+![alt text](https://github.com/HK-KYL/sails.js-EventManagementSystem/blob/master/readme_img/event_details.JPG?raw=true)
 
 ## Login
-![alt text](https://github.com/HK-KYL/sails.js-EventManagementSystem/blob/master/readme_img/login_page.jpg?raw=true)
+![alt text](https://github.com/HK-KYL/sails.js-EventManagementSystem/blob/master/readme_img/login_page.JPG?raw=true)
 
 ## Event Create
 ![alt text](https://github.com/HK-KYL/sails.js-EventManagementSystem/blob/master/readme_img/create_page.png?raw=true)
 
 ## Admin Page
-![alt text](https://github.com/HK-KYL/sails.js-EventManagementSystem/blob/master/readme_img/admin_page.jpg?raw=true)
+![alt text](https://github.com/HK-KYL/sails.js-EventManagementSystem/blob/master/readme_img/admin_page.JPG?raw=true)
 
 ## Event Create
 ![alt text](https://github.com/HK-KYL/sails.js-EventManagementSystem/blob/master/readme_img/create_page.png?raw=true)
 
 ## Event Update
-![alt text](https://github.com/HK-KYL/sails.js-EventManagementSystem/blob/master/readme_img/update_page.jpg?raw=true)
+![alt text](https://github.com/HK-KYL/sails.js-EventManagementSystem/blob/master/readme_img/update_page.JPG?raw=true)
 
 ## Event Update
-![alt text](https://github.com/HK-KYL/sails.js-EventManagementSystem/blob/master/readme_img/registered_events.jpg?raw=true)
+![alt text](https://github.com/HK-KYL/sails.js-EventManagementSystem/blob/master/readme_img/registered_events.JPG?raw=true)
 
 ### Links
 
